@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            rb.constraints = RigidbodyConstraints2D.None;
         }
 
         Flip();
@@ -54,6 +55,6 @@ public class PlayerMovement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D c2d)
     {
         rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.0f);
-        //yield WaitForSeconds(3);
+        rb.constraints = RigidbodyConstraints2D.FreezePositionX;
     }
 }
