@@ -50,4 +50,9 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = localScale;
         }
     }
+
+    void OnTriggerEnter2D(Collider2D c2d)
+    {
+        rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.0f);
+    }
 }
