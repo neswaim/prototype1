@@ -8,10 +8,16 @@ public class PlayerMovement : MonoBehaviour
     private float speed = 8f;
     private float jumpingPower = 16f;
     private bool isFacingRight = true;
+    public AudioSource tickSource;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+
+    void Start()
+    {
+        tickSource = GetComponent<AudioSource>();
+    }
 
     void Update()
     {
@@ -56,5 +62,13 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.0f);
         rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+    }
+    
+    void onCollisionEnter2D(Collider2D other)
+    {
+        if (collision.gameObject.tag == ""mud"")
+        {
+            null;
+        }
     }
 }
